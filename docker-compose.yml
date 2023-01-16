@@ -54,12 +54,37 @@ services:
       - &kvikio "${RAPIDS_HOME:-$PWD}/kvikio:${RAPIDS_HOME:-$PWD}/kvikio"
       - &cudf "${RAPIDS_HOME:-$PWD}/cudf:${RAPIDS_HOME:-$PWD}/cudf"
       - &cuml "${RAPIDS_HOME:-$PWD}/cuml:${RAPIDS_HOME:-$PWD}/cuml"
+      - &cumlprims "${RAPIDS_HOME:-$PWD}/cumlprims_mg:${RAPIDS_HOME:-$PWD}/cumlprims_mg"
       - &raft "${RAPIDS_HOME:-$PWD}/raft:${RAPIDS_HOME:-$PWD}/raft"
+      - &cuopt "${RAPIDS_HOME:-$PWD}/cuopt:${RAPIDS_HOME:-$PWD}/cuopt"
       - &compose "${COMPOSE_HOME:-$PWD/compose}:${COMPOSE_HOME:-$PWD/compose}"
       - &cugraph "${RAPIDS_HOME:-$PWD}/cugraph:${RAPIDS_HOME:-$PWD}/cugraph"
+      - &cugraph-ops "${RAPIDS_HOME:-$PWD}/cugraph-ops:${RAPIDS_HOME:-$PWD}/cugraph-ops"
       - &cuspatial "${RAPIDS_HOME:-$PWD}/cuspatial:${RAPIDS_HOME:-$PWD}/cuspatial"
+      - &ucx_py "${RAPIDS_HOME:-$PWD}/ucx-py:${RAPIDS_HOME:-$PWD}/ucx-py"
+      - &cuxfilter "${RAPIDS_HOME:-$PWD}/cuxfilter:${RAPIDS_HOME:-$PWD}/cuxfilter"
+      - &shared-workflows "${RAPIDS_HOME:-$PWD}/shared-workflows:${RAPIDS_HOME:-$PWD}/shared-workflows"
+      - &integration "${RAPIDS_HOME:-$PWD}/integration:${RAPIDS_HOME:-$PWD}/integration"
+      - &rapids_dask_dependency "${RAPIDS_HOME:-$PWD}/rapids-dask-dependency:${RAPIDS_HOME:-$PWD}/rapids-dask-dependency"
+      - &devcontainers "${RAPIDS_HOME:-$PWD}/devcontainers:${RAPIDS_HOME:-$PWD}/devcontainers"
+      - &ci-imgs "${RAPIDS_HOME:-$PWD}/ci-imgs:${RAPIDS_HOME:-$PWD}/ci-imgs"
+      - &gha-tools "${RAPIDS_HOME:-$PWD}/gha-tools:${RAPIDS_HOME:-$PWD}/gha-tools"
+      - &local "${RAPIDS_HOME:-$PWD}/local:${RAPIDS_HOME:-$PWD}/local"
+      - &rapids-cmake "${RAPIDS_HOME:-$PWD}/rapids-cmake:${RAPIDS_HOME:-$PWD}/rapids-cmake"
+      - &dfg "${RAPIDS_HOME:-$PWD}/dependency-file-generator:${RAPIDS_HOME:-$PWD}/dependency-file-generator"
       - &bashrc "${COMPOSE_HOME:-$PWD/compose}/etc/rapids/.bashrc:${RAPIDS_HOME:-$PWD}/.bashrc"
       - &bash_aliases "${COMPOSE_HOME:-$PWD/compose}/etc/rapids/.bash_aliases:${RAPIDS_HOME:-$PWD}/.bash_aliases"
+      - &vimrc "${HOME}/.vimrc:${RAPIDS_HOME:-$PWD}/.vimrc"
+      - &lvimrc "${COMPOSE_HOME:-$PWD}/.lvimrc:${RAPIDS_HOME:-$PWD}/.lvimrc"
+      - &vim "${RAPIDS_HOME:-$PWD}/.vim:${RAPIDS_HOME:-$PWD}/.vim"
+      - &cocvim "${HOME}/.vim/coc-settings.json:${RAPIDS_HOME:-$PWD}/.vim/coc-settings.json"
+      - &cache "${RAPIDS_HOME:-$PWD}/.cache:${RAPIDS_HOME:-$PWD}/.cache"
+      - &ssh "${HOME}/.ssh:${RAPIDS_HOME:-$PWD}/.ssh"
+      - &gitignore "${HOME}/.gitignore:${RAPIDS_HOME:-$PWD}/.gitignore"
+      - &gitconfig "${HOME}/.gitconfig:${RAPIDS_HOME:-$PWD}/.gitconfig"
+      - &gitsigners "${HOME}/.config/git/allowed_signers:${RAPIDS_HOME:-$PWD}/.config/git/allowed_signers"
+      - &fzf_bash "${RAPIDS_HOME:-$PWD}/.fzf.bash:${RAPIDS_HOME:-$PWD}/.fzf.bash"
+      - &tmux_conf "${HOME}/.tmux.conf:${RAPIDS_HOME:-$PWD}/.tmux.conf"
       - &colornvcc "${COMPOSE_HOME:-$PWD/compose}/etc/rapids/colornvcc:/usr/local/bin/nvcc"
       - &dot_colornvccrc "${COMPOSE_HOME:-$PWD/compose}/etc/settings/.colornvccrc:${RAPIDS_HOME:-$PWD}/.colornvccrc"
       - &dot_local "${COMPOSE_HOME:-$PWD/compose}/etc/settings/.local:${RAPIDS_HOME:-$PWD}/.local"
@@ -89,6 +114,7 @@ services:
       - *compose
       - *cugraph
       - *cuspatial
+      - *rapids-cmake
       - *bashrc
       - *colornvcc
       - *dot_colornvccrc

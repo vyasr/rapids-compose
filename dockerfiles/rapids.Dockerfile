@@ -61,6 +61,7 @@ fi' \
     libxrender1 \
     libnuma1 \
     libnuma-dev \
+    bash-completion \
  && bash -c '\
 if [[ "$USE_FISH_SHELL" == "YES" ]]; then \
     apt install --no-install-recommends -y fish; \

@@ -11,7 +11,7 @@ source "$COMPOSE_HOME/etc/conda-install.sh" rapids
 # activate the rapids conda environment on bash login
 echo "export CONDA_DEFAULT_ENV=rapids \
    && source \"$RAPIDS_HOME/.bashrc\" >/dev/null 2>&1 \
-   && source activate rapids >/dev/null 2>&1" \
+   && source activate rapids >/dev/null 2>&1 "\
 > "$RAPIDS_HOME/.bash_login"
 
 # If fresh conda env and cmd is build-rapids,

@@ -12,6 +12,9 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
 export HISTFILE="$RAPIDS_HOME/.eternal_bash_history"
 
+# Make sure the shell is exported for vim to find inside the container
+export SHELL
+
 export CCACHE_DIR="$COMPOSE_HOME/etc/.ccache";
 export CCACHE_COMPILERCHECK="%compiler% --version";
 # Set this to debug ccache preprocessor errors and cache misses
@@ -104,6 +107,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias vi=vim
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -120,3 +124,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
    . /etc/bash_completion
 fi
+
+# Specify where to find cmake formatting file
+export RAPIDS_CMAKE_FORMAT_FILE=~/cudf/cpp/build/relwithdebinfo/_deps/rapids-cmake-src/cmake-format-rapids-cmake.json

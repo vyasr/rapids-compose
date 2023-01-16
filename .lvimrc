@@ -1,0 +1,27 @@
+function! s:find_repo_name()
+  silent! !git rev-parse --is-inside-work-tree
+  " Need to redraw after silent, see
+  " https://vim.fandom.com/wiki/Avoiding_the_%22Hit_ENTER_to_continue%22_prompts
+  redraw!
+  if v:shell_error != 0
+      throw "Not in git repository!"
+  endif
+  return system("git remote -v | grep origin | grep fetch | awk '{print $2}' | cut -d '/' -f 2 | cut -d '.' -f 1")[:-2]
+endfunction
+
+command! Buildcpp execute 'AsyncRun build-' . s:find_repo_name() . '-cpp'
+command! Buildpython execute 'AsyncRun build-' . s:find_repo_name() . '-python'
+command! BuildcppRaw execute 'AsyncRun -raw build-' . s:find_repo_name() . '-cpp'
+command! BuildpythonRaw execute 'AsyncRun -raw build-' . s:find_repo_name() . '-python'
+
+command! Cleancpp execute 'AsyncRun clean-' . s:find_repo_name() . '-cpp'
+command! Cleanpython execute 'AsyncRun clean-' . s:find_repo_name() . '-python'
+
+nmap <leader>bc :BuildcppRaw<CR>
+nmap <leader>bp :BuildpythonRaw<CR>
+
+set errorformat^=%-Gwarning:\ %f:%l:%c:%.%#\ redeclared%.%#  " Ignore Cython warnings about use of unscoped enums
+set errorformat^=%-G%f:%l:\ UserWarning:\ Normalizing%.%#  " Ignore versioneer version normalization
+
+" Override my base setting since RAPIDS chooses to match flake8
+let g:pymode_options_max_line_length = 79

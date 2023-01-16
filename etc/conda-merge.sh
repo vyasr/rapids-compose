@@ -19,6 +19,13 @@ channels:
 - conda-forge
 - nvidia
 dependencies:
+- tmux
+- vim
+- nodejs
+- universal-ctags
+- curl
+- htop
+- openssh
 - python=${PYTHON_VERSION}
 - pip:
   - debugpy
