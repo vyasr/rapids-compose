@@ -91,7 +91,7 @@ elif [ -n "${CHANGED// }" ]; then
     # update the existing environment
     mamba update -n base -c conda-forge mamba \
     && mamba update -n base -c conda-forge conda \
-    && mamba env update -n $ENV_NAME --file $INSIDE__ENV_YML --prune \
+    && conda env update -n $ENV_NAME --file $INSIDE__ENV_YML --prune --solver=libmamba \
     || CONDA_ENV_UPDATE_FAILED=1
 
     if [ "$CONDA_ENV_UPDATE_FAILED" -eq "0" ]; then
